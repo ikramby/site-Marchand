@@ -1,0 +1,102 @@
+
+#container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product {
+  width: 300px;
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 100px;
+  
+  margin: 0;
+ 
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+}
+
+nav {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+.product-checkbox {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+label {
+  font-size: 20px;
+  margin-right: 10px;
+}
+#search-container {
+  display: flex;
+  align-items: center;
+}
+
+#search {
+  float: right;
+  margin-right: 10px;
+}
+
+#filter-icon {
+  float: right;
+  margin-right: 5px;
+  cursor: pointer;
+}
+#product-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+#product-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+#filter-icon {
+  cursor: pointer;
+}
+#recette {
+  display: block; /* make the input element a block element */
+  margin: 0 auto; /* center the input element horizontally */
+  font-size: 20px; /* increase the font size */
+}

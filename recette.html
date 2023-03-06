@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-GRNNA/J/BURCpfwv43AcW0a0L74OyxPB/5U6M5B6bpRjOcd/eSbYzoy7Vx8gZWz+7V4Ch3qU5v6UeeCrZDWGg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-2WdMjFTKdzDA6tAjeFY9F0Q0eNTl81izBhrpGvN0ywkWJPK0hCvhrcTg+UMrykXfO3O81rTYr3q0jIwzISxWsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    
+    <title>Recette</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Recette</h1>
+
+      <nav>
+        <ul>
+          <li><a href="#" id="home-link">Home</a></li>
+          <li><a href="#" id="products-link">Recette</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <h1>Veuillez Choisir un ingrédients pour trouver une recette facile</h1>
+    <br>
+    <div>
+      <input id="text-input" type="text" style="font-size: 24px; text-align: center;" placeholder="Nom de produit pour recette" />
+    </div>
+    <br>
+
+    <div id="image-container">
+      <img src="cremeRizLaitSucre.jpeg" alt="Creme de Riz au Lait Sucre" class="recipe-image">
+      <img src="crepeLaitFarineOeuf.jpeg" alt="Crepe au Lait Farine Oeuf" class="recipe-image">
+      <img src="tiramisuCaféOeufSucre.jpeg" alt="Tiramisu Café Oeuf Sucre" class="recipe-image">
+    </div>
+
+    <script>
+      const textInput = document.getElementById('text-input');
+      const recipeImages = document.getElementsByClassName('recipe-image');
+      
+      // Add an event listener to the text input field to listen for changes
+      textInput.addEventListener('input', () => {
+        // Get the text value from the input field
+        const textValue = textInput.value.toLowerCase();
+        
+        // Loop through each recipe image and check if its file name contains the input text
+        //for loop that will iterate through each image in the recipeImages array.
+        for (let i = 0; i < recipeImages.length; i++) {
+          const imageName = recipeImages[i].src.split('/').pop().split('.')[0].toLowerCase();
+
+          //For each image, this line creates a new variable imageName.
+          // It uses the split method to break up the image source URL by slashes ('/') and  ('.').
+          // It then uses pop to get the last part of the URL (which is the image file name), 
+          //and finally uses [0] to get just the file name without the file extension. 
+          //It also converts the resulting string to lowercase using the toLowerCase method.
+
+          if (imageName.includes(textValue.toLowerCase())) {
+//If the search term is found in the image file name, 
+//this line sets the display CSS property of the image to 'block', which will make it visible.
+            recipeImages[i].style.display = 'block';
+          } else {
+            //else if not found in the image file name, this line sets the display CSS property of the image to 'none', which will hide it.
+            recipeImages[i].style.display = 'none';
+          }
+        }
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $('#home-link').click(function () {
+          window.location.href = 'index.html';
+        });
+
+        $('#products-link').click(function () {
+          window.location.href = 'recette.html';
+        });
+
+        
+      });
+    </script>
+  </body>
+</html>

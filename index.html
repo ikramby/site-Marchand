@@ -4,92 +4,116 @@
     <title>Marchand Drive</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <link rel="stylesheet" href="style.css" />
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-GRNNA/J/BURCpfwv43AcW0a0L74OyxPB/5U6M5B6bpRjOcd/eSbYzoy7Vx8gZWz+7V4Ch3qU5v6UeeCrZDWGg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-2WdMjFTKdzDA6tAjeFY9F0Q0eNTl81izBhrpGvN0ywkWJPK0hCvhrcTg+UMrykXfO3O81rTYr3q0jIwzISxWsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
-    
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
+ 
    
   </head>
 
   <body>
     <header>
       <h1>Marchand Drive</h1>
-      <nav>
-        <ul>
-          <li><a href="#" id="home-link">Home</a></li>
-          <li><a href="#" id="products-link">Recette</a></li>
-        
-        </ul>
-      </nav>
+    
+        <nav>
+          <ul>
+            <li><a href="#" id="home-link">Home</a></li>
+          
+            <li><a href="#" id="products-link">Recette</a></li>
+            <li><a href="#" id="admin">Stock</a></li>
+          
+          </ul>
+        </nav>
     </header>
 
 
 <div>
-  <input type="text" id="search" placeholder="Recherche par nom" />
+  <input type="text" id="search" placeholder="Recherche par nom" style= "width : 300px; height : 25px;"/>
   <i class="fas fa-filter"></i>
 </div>
 
 
 
 
-    <div id="container">
+    <div id="container" style= "text-align:center; margin:100px;">
       <ul id="product-list"></ul>
+      
     </div>
+  
+    <div id="cart-total"></div>
+
+    
+    
     <script src="main.js"></script>
 
     <script>
 
-     //event listener to the element with the id of "search" 
-     //and listens for the "input" event (which occurs whenever the user types in the associated input field). 
-     //When the event is triggered, the function inside the curly braces will run.
-    $('#search').on('input', function () {
-      // $(this) refers to the element that triggered the event (in this case, the input field), and the .val() method retrieves its value. 
-     
-      const searchQuery = $(this).val().toLowerCase();
-
-    // clear the product list before repopulating it
-      $('#product-list').empty(); 
-//iteration through each object in the products array.
-      for (let i = 0; i < products.length; i++) {
-        const productName = products[i].name.toLowerCase();
-        if (productName.includes(searchQuery)) {
+      //event listener to the element with the id of "search" 
+     $('#search').on('input', function () {
+       // $(this) refers to the element that triggered the event (in this case, the input field), and the .val() method retrieves its value. 
+      
+       const searchQuery = $(this).val().toLowerCase();
+ 
+     // clear the product list before repopulating it
+       $('#product-list').empty(); 
+ //iteration through each object in the products array.
+       for (let i = 0; i < products.length; i++) {
+         const productName = products[i].name.toLowerCase();
+         if (productName.includes(searchQuery)) {
+          
          
-        
- // show the corresponding product information div
-
- // this jQuery statement selects the div element with the index number of i that is a child of an element with the ID of container, and then shows that element.
-//In other words, if i is 0, the statement selects the first div element within #container, and then displays it on the page (if it is hidden). 
-//If i is 1, the statement selects the second div element within #container, and then displays it on the page (if it is hidden), and so on.
-//The :eq() selector is used to select the element with the specified index number.
-// It is a zero-based index, meaning that the first element has an index of 0, the second element has an index of 1, and so on.
-//The show() method is then used to display the selected element on the page if it is hidden.
-
-          $(`#container div:eq(${i})`).show();
-        
-        
-        } else {
-          // hide the corresponding product information div
-          $(`#container div:eq(${i})`).hide();
-        }
-      }
-    });
-    
-
+  // show the corresponding product information div
+  // this jQuery statement selects the div element with the index number of i, 0 selects the first div element, 1 selects the second div element
+  //:eq() selector selects the element with the specified index number.
+ 
+           $(`#container div:eq(${i})`).show();
+         
+         
+         } else {
+           // hide the corresponding product information div
+           $(`#container div:eq(${i})`).hide();
+         }
+       }
+     });
      
-    </script>
+ 
+      
+     </script>
+ 
 
  
     <script>
       $(document).ready(function () {
+
         $('#home-link').click(function () {
           window.location.href = 'index.html';
         });
+        $(document).ready(function () {
+          $('#admin').click(function () {
+            window.location.href = 'admin.html';
+             // Iterate over each product and update its stock value
+    //for (let i = 0; i < products.length; i++) {
+    //  const newStockValue = someFunctionToUpdateStockValue(products[i]);
+    //  products[i].stock = newStockValue;
+    //}
 
+    // Update the chart dataset with the latest stock values
+    myChart.data.datasets[0].data = products.map(product => product.stock);
+    myChart.update();
+          });
         $('#products-link').click(function () {
           window.location.href = 'recette.html';
         });
-
+      });
         
       });
     </script>

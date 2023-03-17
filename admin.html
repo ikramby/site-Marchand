@@ -1,0 +1,114 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<html>
+  <head>
+    <title>Marchand Drive</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+   
+  </head>
+  <body>
+    <header>
+      <h1>Marchand Drive</h1>
+      <nav>
+        <ul>
+          <li><a href="#" id="home-link">Home</a></li>
+          <li><a href="#" id="products-link">Recette</a></li>
+          <li><a href="#" id="admin">Stock</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1 class="pg-title">
+      <i class="fa fa-bar-chart" aria-hidden="true"></i>
+    Stock par produit
+    </h1>
+    <section class="chart-container">
+      <canvas id="myChart"></canvas>
+    </section>
+  
+    <script src="main.js"></script>
+<script>
+  // Create arrays of product names and quantities
+  let productNames = [];
+  let productQtys = [];
+  products.forEach((product) => {
+    productNames.push(product.name);
+    productQtys.push(product.stock);
+  });
+
+  // Create a chart using Chart.js
+  let ctx = document.getElementById('myChart').getContext('2d');
+  let myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: productNames,
+      datasets: [{
+        label: 'Stock',
+        data: productQtys,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            font: {
+              weight: 'bold',
+              color: 'black',
+              size: 20 // Change the font size here
+            }
+          }
+        },
+        x: {
+          ticks: {
+            font: {
+              weight: 'bold',
+              color: 'black',
+              size: 20 // Change the font size here
+            }
+          }
+        }
+      }
+    }
+  });
+ 
+ 
+
+  
+  
+</script>
+
+    <script>
+      $(document).ready(function () {
+
+        $('#home-link').click(function () {
+          window.location.href = 'index.html';
+        });
+        $(document).ready(function () {
+          $('#admin').click(function () {
+            window.location.href = 'admin.html';
+          });
+        $('#products-link').click(function () {
+          window.location.href = 'recette.html';
+        });
+      });
+        
+      });
+    </script>
+    
+  </body>
+  
+</html>

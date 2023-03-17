@@ -20,7 +20,8 @@
       <nav>
         <ul>
           <li><a href="#" id="home-link">Home</a></li>
-          <li><a href="#" id="products-link">Recette</a></li>
+                    <li><a href="#" id="products-link">Recette</a></li>
+                    <li><a href="#" id="admin">Stock</a></li>
         </ul>
       </nav>
     </header>
@@ -28,7 +29,7 @@
     <h1>Veuillez Choisir un ingrédients pour trouver une recette facile</h1>
     <br>
     <div>
-      <input id="text-input" type="text" style="font-size: 24px; text-align: center;" placeholder="Nom de produit pour recette" />
+      <input id="text-input" type="text" style="font-size: 24px; text-align: center; margin-left:50px;" placeholder="Nom de produit pour recette" />
     </div>
     <br>
 
@@ -71,16 +72,19 @@
     </script>
     <script>
       $(document).ready(function () {
+     
         $('#home-link').click(function () {
           window.location.href = 'index.html';
         });
-
+          $('#admin').click(function () {
+            window.location.href = 'admin.html';
+          });
         $('#products-link').click(function () {
           window.location.href = 'recette.html';
         });
-
-        
       });
+        
+      
     </script>
   </body>
 </html>
